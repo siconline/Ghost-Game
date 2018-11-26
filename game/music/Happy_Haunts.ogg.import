@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Happy_Haunts.ogg-ec8d4e8d03e321df0fe3df9afaf84f30.oggstr"
+
+[deps]
+
+source_file="res://music/Happy_Haunts.ogg"
+dest_files=[ "res://.import/Happy_Haunts.ogg-ec8d4e8d03e321df0fe3df9afaf84f30.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
