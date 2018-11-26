@@ -7,11 +7,14 @@ var playerInput = false
 var light_off
 var score = 0
 var ghost_speed = 150
+var start_cover_effect = false
+var cover_effect_one_time = true
+
 
 
 
 func _physics_process(delta):
-	print(score)
+	
 	
 	if Input.is_action_just_pressed("ui_right"):
 		if playerInput == true:
@@ -31,6 +34,11 @@ func _physics_process(delta):
 		score += 1
 		self.position.x = 768/2
 		ghost_speed += 10
+		
+	elif self.position.x <= 0 || self.position.x >= 768:
+		if cover_effect_one_time == true:
+			start_cover_effect = true
+			cover_effect_one_time = false
 	
 	if Input.is_action_just_pressed("ui_down"):
 		if playerInput == true:
@@ -49,4 +57,10 @@ func _physics_process(delta):
 		self.position.y = 768/2
 		ghost_speed += 10
 	
+	elif self.position.y <= 0 || self.position.y >= 768:
+		if cover_effect_one_time == true:
+			start_cover_effect = true
+			cover_effect_one_time = false
+	
 	move_and_collide(movement * delta)
+
