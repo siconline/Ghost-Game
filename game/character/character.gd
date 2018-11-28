@@ -9,7 +9,9 @@ var score = 0
 var ghost_speed = 150
 var start_cover_effect = false
 var cover_effect_one_time = true
-
+var boost = false
+var goal = false # by true set in main_scene ghost collision disabled
+var nimbus_state = false
 
 
 
@@ -62,5 +64,40 @@ func _physics_process(delta):
 			start_cover_effect = true
 			cover_effect_one_time = false
 	
-	move_and_collide(movement * delta)
+	
+	# RESET var goal
+	if light_off == true:
+		goal = true
+	else:
+		goal = false
+	
+	
+	# BOOST CONTROL - MANAGE CHARACTER SPEED
+	if nimbus_state == true:
+		boost = true
+			
+	if nimbus_state == false:
+			boost = false
 
+	if boost == true:
+		if movement.x >= 150 && movement.y == 0:
+			movement = Vector2(ghost_speed, 0)
+		elif movement.x == 0 && movement.y >= 150:
+			movement = Vector2(0, ghost_speed)
+		elif movement.x <= -150 && movement.y == 0:
+			movement = Vector2(-ghost_speed, 0)
+		elif movement.x == 0 && movement.y <= -150:
+			movement = Vector2(0, -ghost_speed)
+	else:
+		if movement.x > 150 && movement.y == 0:
+			movement = Vector2(speed, 0)
+		elif movement.x == 0 && movement.y > 150:
+			movement = Vector2(0, speed)
+		elif movement.x < -150 && movement.y == 0:
+			movement = Vector2(-speed, 0)
+		elif movement.x == 0 && movement.y < -150:
+			movement = Vector2(0, -speed)
+	
+	
+	move_and_collide(movement * delta)
+	

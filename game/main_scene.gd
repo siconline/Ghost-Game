@@ -3,6 +3,8 @@ extends Node
 
 var light_state = 0
 onready var ghost_state = $ghost.ghost_state
+var boost = false
+
 
 
 
@@ -27,9 +29,9 @@ func _process(delta):
 	
 	
 	if $character.start_cover_effect == true:
-		$Cover_effect/AnimationPlayer.play("white_to_black")
+		$cover/Cover_effect/AnimationPlayer.play("white_to_black")
 		$character.start_cover_effect = false
-	if $Cover_effect/AnimationPlayer.is_playing() == false:
+	if $cover/Cover_effect/AnimationPlayer.is_playing() == false:
 		$character.cover_effect_one_time = true
 	
 	$Score.text = str("Level : ", $character.score)
@@ -41,6 +43,31 @@ func _process(delta):
 		$Light2D_up.enabled = false
 		$Light2D_down.enabled = false
 		$character.light_off = false
+	
+	if $character.goal == true:
+		$ghost/CollisionShape2D.disabled = true
+	
+	
+	# BOOST CONTROL - MANAGE STATEBAR BOOST
+	if Input.is_action_just_pressed("ui_accept"):
+		if $character.movement.x > 0 || $character.movement.y > 0 || $character.movement.x < 0 || $character.movement.y < 0:
+			boost = true
+	elif Input.is_action_just_released("ui_accept"):
+		boost = false
+	
+	if boost == true:
+		if $boost.nimbus_state >= 0:
+			$boost.nimbus_state -= 1 * delta
+		if $boost.nimbus_state > 0.1:
+			$character.nimbus_state = true
+		else:
+			$character.nimbus_state = false
+	else:
+		$character.nimbus_state = false
+		if $boost.nimbus_state <= 1.5:
+			$boost.nimbus_state += 0.05 * delta
+
+
 
 
 func _on_Timer_timeout():
