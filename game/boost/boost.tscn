@@ -5,7 +5,7 @@
 [ext_resource path="res://boost/images/besenschein.png" type="Texture" id=3]
 [ext_resource path="res://images/cover_white.jpg" type="Texture" id=4]
 
-[node name="boost" type="Control"]
+[node name="boost" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -23,7 +23,7 @@ script = ExtResource( 1 )
 
 [node name="Nimbus2000" type="Sprite" parent="." index="0"]
 
-self_modulate = Color( 0, 1, 0.695313, 0.530392 )
+self_modulate = Color( 0, 1, 0.695313, 0.707216 )
 position = Vector2( 153.031, 717.835 )
 scale = Vector2( 1.56394, 1.56394 )
 z_index = 1
@@ -42,7 +42,7 @@ editor_only = false
 texture = ExtResource( 3 )
 offset = Vector2( 0, 0 )
 texture_scale = 1.0
-color = Color( 0.361877, 1, 0.00390625, 1 )
+color = Color( 0, 0.859375, 0.0134277, 1 )
 energy = 2.0
 mode = 0
 range_height = 0.0

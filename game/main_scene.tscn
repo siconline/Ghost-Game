@@ -27,7 +27,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[node name="main_scene" type="Node" index="0"]
+[node name="main_scene" type="Node"]
 
 script = ExtResource( 1 )
 
