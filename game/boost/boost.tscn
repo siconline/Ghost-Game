@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://boost/boost.gd" type="Script" id=1]
 [ext_resource path="res://images/assets_768.png" type="Texture" id=2]
-[ext_resource path="res://images/cover_white.jpg" type="Texture" id=3]
+[ext_resource path="res://boost/images/besenschein.png" type="Texture" id=3]
+[ext_resource path="res://images/cover_white.jpg" type="Texture" id=4]
 
 [node name="boost" type="Control"]
 
@@ -22,6 +23,7 @@ script = ExtResource( 1 )
 
 [node name="Nimbus2000" type="Sprite" parent="." index="0"]
 
+self_modulate = Color( 0, 1, 0.695313, 0.530392 )
 position = Vector2( 153.031, 717.835 )
 scale = Vector2( 1.56394, 1.56394 )
 z_index = 1
@@ -29,15 +31,42 @@ texture = ExtResource( 2 )
 vframes = 3
 hframes = 3
 frame = 2
-_sections_unfolded = [ "Animation", "Z Index" ]
+_sections_unfolded = [ "Animation", "Visibility", "Z Index" ]
 
-[node name="Light2D" type="Light2D" parent="Nimbus2000" index="0"]
+[node name="bloom" type="Light2D" parent="Nimbus2000" index="0"]
+
+position = Vector2( -3.35507, -9.08591 )
+scale = Vector2( 0.610044, 0.610044 )
+enabled = true
+editor_only = false
+texture = ExtResource( 3 )
+offset = Vector2( 0, 0 )
+texture_scale = 1.0
+color = Color( 0.361877, 1, 0.00390625, 1 )
+energy = 2.0
+mode = 0
+range_height = 0.0
+range_z_min = 0
+range_z_max = 0
+range_layer_min = 0
+range_layer_max = 0
+range_item_cull_mask = 1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 0 )
+shadow_buffer_size = 2048
+shadow_gradient_length = 0.0
+shadow_filter = 0
+shadow_filter_smooth = 0.0
+shadow_item_cull_mask = 1
+_sections_unfolded = [ "Range", "Z Index" ]
+
+[node name="Light2D" type="Light2D" parent="Nimbus2000" index="1"]
 
 position = Vector2( -90.4587, -1.51196 )
 scale = Vector2( 1.40759, 0.176221 )
 enabled = true
 editor_only = false
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 offset = Vector2( 0, 0 )
 texture_scale = 1.0
 color = Color( 0.125, 1, 0, 1 )
@@ -56,7 +85,7 @@ shadow_gradient_length = 0.0
 shadow_filter = 0
 shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
-_sections_unfolded = [ "Range", "Transform" ]
+_sections_unfolded = [ "Range", "Transform", "Z Index" ]
 __meta__ = {
 "_edit_lock_": true
 }

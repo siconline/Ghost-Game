@@ -56,13 +56,16 @@ func _process(delta):
 		boost = false
 	
 	if boost == true:
+		$boost/Nimbus2000/bloom.energy = 2
 		if $boost.nimbus_state >= 0:
 			$boost.nimbus_state -= 1 * delta
 		if $boost.nimbus_state > 0.1:
 			$character.nimbus_state = true
 		else:
 			$character.nimbus_state = false
+			$boost/Nimbus2000/bloom.energy = 1
 	else:
+		$boost/Nimbus2000/bloom.energy = 1
 		$character.nimbus_state = false
 		if $boost.nimbus_state <= 1.5:
 			$boost.nimbus_state += 0.05 * delta
