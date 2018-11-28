@@ -22,12 +22,16 @@ func _physics_process(delta):
 		if playerInput == true:
 			playerInput = false
 			$Sprite.flip_h = false
+			$Sprite/Light2D.scale.x = 0.576612		# nimbus bloom direction
+			$Sprite/Light2D.position.x = -4.358089	# nimbus bloom direction
 			movement = Vector2(speed, 0)
 			
 	elif Input.is_action_just_pressed("ui_left"):
 		if playerInput == true:
 			playerInput = false
 			$Sprite.flip_h = true
+			$Sprite/Light2D.scale.x = -0.576612		# nimbus bloom direction
+			$Sprite/Light2D.position.x = 4.358089	# nimbus bloom direction
 			movement = Vector2(-speed, 0)
 			
 	elif self.position.x <= 0-100 || self.position.x >= 768+100:

@@ -55,17 +55,20 @@ func _process(delta):
 	elif Input.is_action_just_released("ui_accept"):
 		boost = false
 	
-	if boost == true:
-		$boost/Nimbus2000/bloom.energy = 2
+	if boost == true:	# main boost aktivate
+		$character/Sprite/Light2D.energy = 2	# nimbus bloom value
+		$boost/Nimbus2000/bloom.energy = 2		# nimbus bloom value hud
 		if $boost.nimbus_state >= 0:
 			$boost.nimbus_state -= 1 * delta
 		if $boost.nimbus_state > 0.1:
 			$character.nimbus_state = true
 		else:
 			$character.nimbus_state = false
+			$character/Sprite/Light2D.energy = 0
 			$boost/Nimbus2000/bloom.energy = 1.2
 	else:
-		$boost/Nimbus2000/bloom.energy = 1.2
+		$character/Sprite/Light2D.energy = 0	# nimbus bloom value
+		$boost/Nimbus2000/bloom.energy = 1.2	# nimbus bloom value hud
 		$character.nimbus_state = false
 		if $boost.nimbus_state <= 1.5:
 			$boost.nimbus_state += 0.05 * delta
