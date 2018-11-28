@@ -52,23 +52,32 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		if $character.movement.x > 0 || $character.movement.y > 0 || $character.movement.x < 0 || $character.movement.y < 0:
 			boost = true
+			if $character/Sprite/bloomOUTPlayer.is_playing():	# bloom controll on character
+				pass
+			else:
+				$character/Sprite/bloomINPlayer.play("bloom")		# bloom controll on character
 	elif Input.is_action_just_released("ui_accept"):
 		boost = false
 	
 	if boost == true:	# main boost aktivate
-		$character/Sprite/Light2D.energy = 2	# nimbus bloom value
-		$boost/Nimbus2000/bloom.energy = 2		# nimbus bloom value hud
 		if $boost.nimbus_state >= 0:
 			$boost.nimbus_state -= 1 * delta
 		if $boost.nimbus_state > 0.1:
 			$character.nimbus_state = true
 		else:
 			$character.nimbus_state = false
-			$character/Sprite/Light2D.energy = 0
-			$boost/Nimbus2000/bloom.energy = 1.2
+			if $character/Sprite/bloomOUTPlayer.is_playing():	# bloom controll on character
+				pass
+			else:
+				$character/Sprite/bloomOUTPlayer.play_backwards("bloom")	# bloom controll on character
 	else:
-		$character/Sprite/Light2D.energy = 0	# nimbus bloom value
-		$boost/Nimbus2000/bloom.energy = 1.2	# nimbus bloom value hud
+		if $character/Sprite/bloomOUTPlayer.is_playing():	# bloom controll on character
+			pass
+		else:
+			if $character/Sprite/Light2D.energy < 1:
+				pass
+			else:
+				$character/Sprite/bloomOUTPlayer.play_backwards("bloom")	# bloom controll on character
 		$character.nimbus_state = false
 		if $boost.nimbus_state <= 1.5:
 			$boost.nimbus_state += 0.05 * delta
