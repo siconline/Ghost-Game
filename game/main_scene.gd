@@ -69,7 +69,10 @@ func _process(delta):
 			if $character/Sprite/bloomOUTPlayer.is_playing():	# bloom controll on character
 				pass
 			else:
-				$character/Sprite/bloomOUTPlayer.play_backwards("bloom")	# bloom controll on character
+				if $character/Sprite/Light2D.energy < 1:	# bloom controll on character
+					pass
+				else:
+					$character/Sprite/bloomOUTPlayer.play_backwards("bloom")	# bloom controll on character
 	else:
 		if $character/Sprite/bloomOUTPlayer.is_playing():	# bloom controll on character
 			pass
