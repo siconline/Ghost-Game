@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://main_scene.gd" type="Script" id=1]
 [ext_resource path="res://character/character.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://images/light_2.png" type="Texture" id=6]
 [ext_resource path="res://boost/boost.tscn" type="PackedScene" id=7]
 [ext_resource path="res://jewel/jewel.tscn" type="PackedScene" id=8]
+[ext_resource path="res://images/shadow_room.png" type="Texture" id=9]
 
 [sub_resource type="Animation" id=1]
 
@@ -26,6 +27,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../shadow_room:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [node name="main_scene" type="Node" index="0"]
@@ -63,18 +76,19 @@ _sections_unfolded = [ "Drag Margin", "Editor", "Limit", "Material", "Offset", "
 [node name="character" parent="." index="1" instance=ExtResource( 2 )]
 
 position = Vector2( 384, 384 )
-z_index = -1
+z_index = -2
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="ghost" parent="." index="2" instance=ExtResource( 3 )]
 
 position = Vector2( 384, 384 )
+z_index = -1
 _sections_unfolded = [ "Collision", "Transform", "Z Index" ]
 
 [node name="floor" type="Sprite" parent="." index="3"]
 
 position = Vector2( 384, 384 )
-z_index = -2
+z_index = -3
 texture = ExtResource( 4 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 __meta__ = {
@@ -84,6 +98,7 @@ __meta__ = {
 [node name="foreground" type="Sprite" parent="." index="4"]
 
 position = Vector2( 384, 384 )
+z_index = -1
 texture = ExtResource( 5 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 __meta__ = {
@@ -125,7 +140,7 @@ _sections_unfolded = [ "Rect" ]
 [node name="Light2D_left" type="Light2D" parent="." index="7"]
 
 position = Vector2( 158.186, 378 )
-z_index = -1
+z_index = -2
 enabled = true
 editor_only = false
 texture = ExtResource( 6 )
@@ -153,7 +168,7 @@ _sections_unfolded = [ "Z Index" ]
 
 position = Vector2( 387.185, 155 )
 rotation = 1.5708
-z_index = -1
+z_index = -2
 enabled = true
 editor_only = false
 texture = ExtResource( 6 )
@@ -181,7 +196,7 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 position = Vector2( 616.185, 378 )
 rotation = 3.14159
-z_index = -1
+z_index = -2
 enabled = true
 editor_only = false
 texture = ExtResource( 6 )
@@ -209,7 +224,7 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 position = Vector2( 388.185, 615 )
 rotation = 4.71239
-z_index = -1
+z_index = -2
 enabled = true
 editor_only = false
 texture = ExtResource( 6 )
@@ -241,10 +256,17 @@ _sections_unfolded = [ "Anchor", "Rect" ]
 
 position = Vector2( 384, 384 )
 scale = Vector2( 0.5, 0.5 )
-z_index = -2
+z_index = -3
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="cover" type="Node2D" parent="." index="13"]
+[node name="shadow_room" type="Sprite" parent="." index="13"]
+
+position = Vector2( 384, 384 )
+z_index = -1
+texture = ExtResource( 9 )
+_sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
+
+[node name="cover" type="Node2D" parent="." index="14"]
 
 z_index = 5
 _sections_unfolded = [ "Z Index" ]
@@ -254,7 +276,6 @@ __meta__ = {
 
 [node name="Cover_effect" type="ColorRect" parent="cover" index="0"]
 
-editor/display_folded = true
 self_modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.0
 anchor_top = 0.0
