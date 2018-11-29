@@ -50,7 +50,11 @@ func _physics_process(delta):
 	elif self.position.x <= 0-100 || self.position.x >= 768+100:
 		movement = Vector2(0, 0)
 		light_off = true
-		score += 1
+		# MANAGE SCORE - only level up by light on
+		if get_node("../../main_scene/Light2D_right").enabled == true || get_node("../../main_scene/Light2D_left").enabled == true:
+			score += 1
+		else:
+			score -= 1
 		self.position.x = 768/2
 		ghost_speed += 10
 		
@@ -77,7 +81,11 @@ func _physics_process(delta):
 	elif self.position.y <= 0-100 || self.position.y >= 768+100:
 		movement = Vector2(0, 0)
 		light_off = true
-		score += 1
+		# MANAGE SCORE - only level up by light on
+		if get_node("../../main_scene/Light2D_up").enabled == true || get_node("../../main_scene/Light2D_down").enabled == true:
+			score += 1
+		else:
+			score -= 1
 		self.position.y = 768/2
 		ghost_speed += 10
 		

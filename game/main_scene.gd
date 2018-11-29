@@ -113,31 +113,39 @@ func _on_Timer_timeout():
 	
 	$character.playerInput = true
 	
-	match light_state:
-		0: 
-			$ghost.position.x = 768
-			$ghost.position.y = 768/2
-			$ghost.value = "left"
-			$Light2D_left.enabled = true
-			_set_jewel()
-		1: 
-			$ghost.position.y = 768
-			$ghost.position.x = 768/2
-			$ghost.value = "up"
-			$Light2D_up.enabled = true
-			_set_jewel()
-		2: 
-			$ghost.position.x = 0
-			$ghost.position.y = 768/2
-			$ghost.value = "right"
-			$Light2D_right.enabled = true
-			_set_jewel()
-		3: 
-			$ghost.position.y = 0
-			$ghost.position.x = 768/2
-			$ghost.value = "down"
-			$Light2D_down.enabled = true
-			_set_jewel()
+	if $character.score == 0 :
+		$ghost.position.x = 1000
+		$ghost.position.y = 1000
+		$Light2D_left.enabled = true
+		$Light2D_up.enabled = true
+		$Light2D_right.enabled = true
+		$Light2D_down.enabled = true
+	else:
+		match light_state:
+			0: 
+				$ghost.position.x = 768
+				$ghost.position.y = 768/2
+				$ghost.value = "left"
+				$Light2D_left.enabled = true
+				_set_jewel()
+			1: 
+				$ghost.position.y = 768
+				$ghost.position.x = 768/2
+				$ghost.value = "up"
+				$Light2D_up.enabled = true
+				_set_jewel()
+			2: 
+				$ghost.position.x = 0
+				$ghost.position.y = 768/2
+				$ghost.value = "right"
+				$Light2D_right.enabled = true
+				_set_jewel()
+			3: 
+				$ghost.position.y = 0
+				$ghost.position.x = 768/2
+				$ghost.value = "down"
+				$Light2D_down.enabled = true
+				_set_jewel()
 	
 	$ghost/CollisionShape2D.disabled = false
 	$ghost/Sprite.visible = true
