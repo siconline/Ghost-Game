@@ -109,7 +109,7 @@ func _reset_jewel():
 func _on_Timer_timeout():
 	
 	
-	$shadow_room.visible = false # when lights on shadow is unvisible - handle visible at cover/Cover_effect/AnimationPlayer
+	#$shadow_room.visible = false # when lights on shadow is unvisible - handle visible at cover/Cover_effect/AnimationPlayer
 	
 	light_state = randi()%4
 	

@@ -33,7 +33,7 @@ tracks/1/path = NodePath("../../shadow_room:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 2 ),
 "transitions": PoolRealArray( 1 ),
@@ -259,6 +259,7 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="shadow_room" type="Sprite" parent="." index="13"]
 
+visible = false
 self_modulate = Color( 1, 1, 1, 0.839765 )
 position = Vector2( 384, 384 )
 texture = ExtResource( 9 )
