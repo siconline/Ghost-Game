@@ -4,7 +4,7 @@ extends KinematicBody2D
 var movement = Vector2(0, 0)
 var speed = 150
 var playerInput = false
-var light_off
+var light_off = true
 var score = 0
 var ghost_speed = 150
 var start_cover_effect = false
@@ -12,9 +12,22 @@ var cover_effect_one_time = true
 var boost = false
 var goal = false # by true set in main_scene ghost collision disabled
 var nimbus_state = false
+var jewel # value for main_scene to change variable in jewel scene
+var light_on # value for main_scene to change variable in jewel scene
 
 
 
+
+func _ready():
+	
+	
+	randomize()
+	
+	jewel = randi()%4 # change jewel at start - random value for jewel
+	
+	
+	
+	
 func _physics_process(delta):
 	
 	
@@ -41,6 +54,11 @@ func _physics_process(delta):
 		self.position.x = 768/2
 		ghost_speed += 10
 		
+		# JEWEL
+		jewel = randi()%4 # change jewel - random value for jewel
+		light_on = true # value for jewel to set jewel
+		get_node("../../main_scene")._reset_jewel() # value for visibility false at jewel
+		
 	elif self.position.x <= 0 || self.position.x >= 768:
 		if cover_effect_one_time == true:
 			start_cover_effect = true
@@ -62,6 +80,11 @@ func _physics_process(delta):
 		score += 1
 		self.position.y = 768/2
 		ghost_speed += 10
+		
+		# JEWEL
+		jewel = randi()%4 # change jewel - random value for jewel
+		light_on = true # value for jewel to set jewel
+		get_node("../../main_scene")._reset_jewel() #value for visibility false at jewel
 	
 	elif self.position.y <= 0 || self.position.y >= 768:
 		if cover_effect_one_time == true:

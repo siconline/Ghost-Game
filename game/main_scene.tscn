@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://main_scene.gd" type="Script" id=1]
 [ext_resource path="res://character/character.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://images/foreground.png" type="Texture" id=5]
 [ext_resource path="res://images/light_2.png" type="Texture" id=6]
 [ext_resource path="res://boost/boost.tscn" type="PackedScene" id=7]
+[ext_resource path="res://jewel/jewel.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Animation" id=1]
 
@@ -27,7 +28,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[node name="main_scene" type="Node" index="0"]
+[node name="main_scene" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -236,10 +237,20 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 _sections_unfolded = [ "Anchor", "Rect" ]
 
-[node name="cover" type="Node2D" parent="." index="12"]
+[node name="jewel" parent="." index="12" instance=ExtResource( 8 )]
+
+position = Vector2( 384, 384 )
+scale = Vector2( 0.5, 0.5 )
+z_index = -2
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="cover" type="Node2D" parent="." index="13"]
 
 z_index = 5
 _sections_unfolded = [ "Z Index" ]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Cover_effect" type="ColorRect" parent="cover" index="0"]
 
@@ -259,6 +270,9 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
 _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Margin", "Mouse", "Rect", "Visibility" ]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="cover/Cover_effect" index="0"]
 

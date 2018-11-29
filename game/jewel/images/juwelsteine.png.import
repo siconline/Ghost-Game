@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/juwelsteine.png-5b5ada2222971b19a0003aba6917ee3b.stex"
+path="res://.import/juwelsteine.png-f2cff2e92a3e3a8830bb72a065a809ac.stex"
 
 [deps]
 
-source_file="res://images/juwelsteine.png"
-dest_files=[ "res://.import/juwelsteine.png-5b5ada2222971b19a0003aba6917ee3b.stex" ]
+source_file="res://jewel/images/juwelsteine.png"
+dest_files=[ "res://.import/juwelsteine.png-f2cff2e92a3e3a8830bb72a065a809ac.stex" ]
 
 [params]
 

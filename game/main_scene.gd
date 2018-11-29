@@ -26,7 +26,7 @@ func _ready():
 	
 	
 func _process(delta):
-	
+
 	
 	if $character.start_cover_effect == true:
 		$cover/Cover_effect/AnimationPlayer.play("white_to_black")
@@ -84,7 +84,25 @@ func _process(delta):
 		$character.nimbus_state = false
 		if $boost.nimbus_state <= 1.5:
 			$boost.nimbus_state += 0.05 * delta
+	
 
+
+
+
+func _set_jewel():
+	# JEWEL
+	# change value for jewel
+	$jewel.jewel = $character.jewel
+	$jewel.jewel_pos = light_state
+	if $character.light_on == true:
+		$jewel.light_on = $character.light_on
+		$character.light_on = false
+
+func _reset_jewel():
+	$jewel/green.visible 	= false
+	$jewel/orange.visible 	= false
+	$jewel/blue.visible 	= false
+	$jewel/red.visible 		= false
 
 
 
@@ -101,21 +119,25 @@ func _on_Timer_timeout():
 			$ghost.position.y = 768/2
 			$ghost.value = "left"
 			$Light2D_left.enabled = true
+			_set_jewel()
 		1: 
 			$ghost.position.y = 768
 			$ghost.position.x = 768/2
 			$ghost.value = "up"
 			$Light2D_up.enabled = true
+			_set_jewel()
 		2: 
 			$ghost.position.x = 0
 			$ghost.position.y = 768/2
 			$ghost.value = "right"
 			$Light2D_right.enabled = true
+			_set_jewel()
 		3: 
 			$ghost.position.y = 0
 			$ghost.position.x = 768/2
 			$ghost.value = "down"
 			$Light2D_down.enabled = true
+			_set_jewel()
 	
 	$ghost/CollisionShape2D.disabled = false
 	$ghost/Sprite.visible = true
